@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minh & Huyền - Wedding Invitation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/GLightbox/3.2.0/css/glightbox.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #d8b4a0;
+            --secondary-color: #596e79;
+            --accent-color: #c5a880;
+            --neutral-color: #f5f5f5;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 70px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--neutral-color);
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-family: 'Georgia', serif;
+            color: var(--accent-color);
+        }
+        
+        .nav-link {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/api/placeholder/1920/1080') center/cover no-repeat;
+            color: var(--text-light);
+            text-align: center;
+            padding: 180px 0 100px;
+            position: relative;
+        }
+        
+        .heart-icon {
+            color: #e74c3c;
+            margin: 0 10px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .hero h1 {
+            font-family: 'Georgia', serif;
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero h2 {
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        
+        .save-date {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            color: var(--text-dark);
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .calendar th, .calendar td {
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .calendar th {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        .calendar td {
+            cursor: default;
+        }
+        
+        .wedding-day {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            border-radius: 50%;
+            font-weight: bold;
+        }
+        
+        /* Couple Section */
+        .couple {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .profile-name {
+            font-family: 'Georgia', serif;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        /* Timeline Section */
+        .love-story {
+            padding: 80px 0;
+            background-color: var(--neutral-color);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid var(--accent-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -12px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-date {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .timeline-icon {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+        
+        /* Event Section */
+        .events {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .event-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .event-card .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .add-calendar {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-calendar:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .event-icon {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 0;
+            background-color: var(--neutral-color);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-gap: 15px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Wedding Party Section */
+        .wedding-party {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .party-card {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .party-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .party-card:hover .party-img {
+            transform: scale(1.1);
+        }
+        
+        .party-role {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        /* Footer Section */
+        .footer {
+            padding: 50px 0;
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .rsvp-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .rsvp-btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        /* Modal */
+        .modal-content {
+            border-radius: 10px;
+            border: none;
+        }
+        
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .modal-footer {
+            border-top: none;
+        }
+        
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Countdown */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .countdown-box {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 15px;
+            }
+            
+            .timeline-item:nth-child(odd)::after {
+                right: auto;
+                left: 15px;
+            }
+            
+            .profile-img, .party-img {
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+            
+            .countdown-container {
+                flex-wrap: wrap;
+            }
+            
+            .countdown-box {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-heart heart-icon"></i> M&H</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#couple"><i class="fas fa-user-friends me-1"></i> Cặp Đôi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#love-story"><i class="fas fa-book-open me-1"></i> Chuyện Tình Yêu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery"><i class="fas fa-images me-1"></i> Album Cưới</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#wedding-party"><i class="fas fa-users me-1"></i> Phù Dâu & Phù Rể</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#events"><i class="fas fa-calendar-alt me-1"></i> Sự Kiện Cưới</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Minh <i class="fas fa-heart heart-icon"></i> Huyền</h1>
+            <h2>Chúng tôi sắp kết hôn!</h2>
+            <div class="save-date">
+                <h3><i class="fas fa-calendar-check me-2"></i> Save the Date</h3>
+                <h4>25 Tháng 5, 2025</h4>
+                <div class="countdown-container" id="countdown">
+                    <div class="countdown-box">
+                        <div id="days">00</div>
+                        <div class="countdown-label">ngày</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div id="hours">00</div>
+                        <div class="countdown-label">giờ</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div id="minutes">00</div>
+                        <div class="countdown-label">phút</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div id="seconds">00</div>
+                        <div class="countdown-label">giây</div>
+                    </div>
+                </div>
+                <table class="calendar">
+                    <thead>
+                        <tr>
+                            <th colspan="7">Tháng 5, 2025</th>
+                        </tr>
+                        <tr>
+                            <th>CN</th>
+                            <th>T2</th>
+                            <th>T3</th>
+                            <th>T4</th>
+                            <th>T5</th>
+                            <th>T6</th>
+                            <th>T7</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>12</td>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>16</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>19</td>
+                            <td>20</td>
+                            <td>21</td>
+                            <td>22</td>
+                            <td>23</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td class="wedding-day">25</td>
+                            <td>26</td>
+                            <td>27</td>
+                            <td>28</td>
+                            <td>29</td>
+                            <td>30</td>
+                            <td>31</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Couple Section -->
+    <section class="couple" id="couple">
+        <div class="container">
+            <h2 class="text-center mb-5"><i class="fas fa-rings-wedding me-2"></i>Cô Dâu & Chú Rể</h2>
+            <div class="row">
+                <div class="col-md-6 text-center mb-4">
+                    <img src="/api/placeholder/400/400" alt="Chú rể" class="profile-img">
+                    <h3 class="profile-name">Nguyễn Văn Minh</h3>
+                    <p><i class="fas fa-briefcase me-2"></i>Kỹ sư phần mềm</p>
+                    <p>Chào mọi người, mình là Minh. Mình đang làm việc trong lĩnh vực công nghệ thông tin. Mình thích đọc sách, đi phượt và chơi guitar trong thời gian rảnh. Cuộc đời mình đã thay đổi hoàn toàn từ khi gặp Huyền, và giờ đây mình không thể hạnh phúc hơn khi được cùng cô ấy bước vào hành trình mới.</p>
+                </div>
+                <div class="col-md-6 text-center mb-4">
+                    <img src="/api/placeholder/400/400" alt="Cô dâu" class="profile-img">
+                    <h3 class="profile-name">Lê Thị Huyền</h3>
+                    <p><i class="fas fa-chart-line me-2"></i>Chuyên viên marketing</p>
+                    <p>Xin chào, mình là Huyền. Mình đang làm trong ngành marketing. Mình yêu thích nấu ăn, yoga và khám phá những quán cà phê mới. Minh là người đã đem đến cho mình những nụ cười và sự ủng hộ vô điều kiện. Mình rất hào hứng được chia sẻ ngày đặc biệt này với tất cả mọi người.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Story Section -->
+    <section class="love-story" id="love-story">
+        <div class="container">
+            <h2 class="text-center mb-5"><i class="fas fa-book-heart me-2"></i>Chuyện Tình Yêu</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4><i class="fas fa-comment-dots timeline-icon"></i>Tin nhắn đầu tiên</h4>
+                        <p class="timeline-date"><i class="far fa-calendar-alt me-2"></i>15/03/2020</p>
+                        <p>Mọi chuyện bắt đầu với một tin nhắn đơn giản trên mạng xã hội. Minh đã tìm thấy Huyền qua một người bạn chung và quyết định gửi lời chào. Cuộc trò chuyện đầu tiên kéo dài đến tận 3 giờ sáng.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4><i class="fas fa-coffee timeline-icon"></i>Buổi hẹn đầu tiên</h4>
+                        <p class="timeline-date"><i class="far fa-calendar-alt me-2"></i>28/04/2020</p>
+                        <p>Sau nhiều tuần nhắn tin, chúng mình đã quyết định gặp nhau tại một quán cà phê nhỏ ở Hà Nội. Dù hơi ngượng ngùng nhưng buổi hẹn đầu tiên đã diễn ra rất tuyệt vời với nhiều tiếng cười và câu chuyện thú vị.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4><i class="fas fa-heart timeline-icon"></i>Tỏ tình</h4>
+                        <p class="timeline-date"><i class="far fa-calendar-alt me-2"></i>15/08/2020</p>
+                        <p>Sau 4 tháng tìm hiểu nhau, Minh đã tỏ tình với Huyền trong một buổi picnic lãng mạn bên hồ Tây. Với một bó hoa hồng và những lời chân thành, cả hai đã chính thức bắt đầu mối quan hệ yêu đương.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4><i class="fas fa-home timeline-icon"></i>Chuyển đến ở chung</h4>
+                        <p class="timeline-date"><i class="far fa-calendar-alt me-2"></i>10/05/2022</p>
+                        <p>Sau 2 năm bên nhau, chúng mình quyết định chuyển đến sống chung trong một căn hộ nhỏ ở quận Cầu Giấy. Đây là bước tiến lớn trong mối quan hệ và là thời gian để cả hai hiểu nhau sâu sắc hơn.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4><i class="fas fa-ring timeline-icon"></i>Cầu hôn</h4>
+                        <p class="timeline-date"><i class="far fa-calendar-alt me-2"></i>25/12/2023</p>
+                        <p>Trong một chuyến du lịch Đà Nẵng, Minh đã bất ngờ quỳ gối và cầu hôn Huyền trên bãi biển Mỹ Khê dưới ánh hoàng hôn. Với chiếc nhẫn kim cương và lời hứa trọn đời, Huyền đã đồng ý!</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4><i class="fas fa-glass-cheers timeline-icon"></i>Đính hôn</h4>
+                        <p class="timeline-date"><i class="far fa-calendar-alt me-2"></i>14/02/2024</p>
+                        <p>Lễ đính hôn diễn ra ấm cúng với sự hiện diện của gia đình hai bên. Đây là khoảnh khắc đánh dấu cột mốc quan trọng, cả hai chính thức bước vào giai đoạn chuẩn bị cho đám cưới.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="text-center mb-5"><i class="fas fa-camera me-2"></i>Album Cưới</h2>
+            <div class="gallery-grid">
+                <a href="/api/placeholder/800/600" class="gallery-item glightbox" data-gallery="wedding-gallery">
+                    <img src="/api/placeholder/400/300" alt="Ảnh cưới 1">
+                </a>
+                <a href="/api/placeholder/800/600" class="gallery-item glightbox" data-gallery="wedding-gallery">
+                    <img src="/api/placeholder/400/300" alt="Ảnh cưới 2">
+                </a>
+                <a href="/api/placeholder/800/600" class="gallery-item glightbox" data-gallery="wedding-gallery">
+                    <img src="/api/placeholder/400/300" alt="Ảnh cưới 3">
+                </a>
+                <a href="/api/placeholder/800/600" class="gallery-item glightbox" data-gallery="wedding-gallery">
+                    <img src="/api/placeholder/400/300" alt="Ảnh cưới 4">
+                </a>
+                <a href="/api/placeholder/800/600" class="gallery-item glightbox" data-gallery="wedding-gallery">
+                    <img src="/api/placeholder/400/300" alt="Ảnh cưới 5">
+                </a>
+                <a href="/api/placeholder/800/600" class="gallery-item glightbox" data-gallery="wedding-gallery">
+                    <img src="/api/placeholder/400/300" alt="Ảnh cưới 6">
+                </a>
+                <a href="/api/placeholder/800/600" class="gallery-item glightbox" data-gallery="wedding-gallery">
+                    <img src="/api/placeholder/400/300" alt="Ảnh cưới 7">
+                </a>
+                <a href="/api/placeholder/800/600" class="gallery-item glightbox" data-gallery="wedding-gallery">
+                    <img src="/api/placeholder/400/300" alt="Ảnh cưới 8">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wedding Party Section -->
+    <section class="wedding-party" id="wedding-party">
+        <div class="container">
+            <h2 class="text-center mb-5"><i class="fas fa-glass-cheers me-2"></i>Phù Dâu & Phù Rể</h2>
+            <div class="row">
+                <!-- Phù Dâu -->
+                <div class="col-md-6 mb-4">
+                    <h3 class="text-center mb-4"><i class="fas fa-female me-2"></i>Phù Dâu</h3>
+                    <div class="row">
+                        <div class="col-sm-6 party-card">
+                            <img src="/api/placeholder/300/300" alt="Phù dâu 1" class="party-img">
+                            <h4>Trần Thị Mai</h4>
+                            <p class="party-role">Phù dâu chính</p>
+                        </div>
+                        <div class="col-sm-6 party-card">
+                            <img src="/api/placeholder/300/300" alt="Phù dâu 2" class="party-img">
+                            <h4>Nguyễn Thị Hà</h4>
+                            <p class="party-role">Phù dâu</p>
+                        </div>
+                        <div class="col-sm-6 party-card">
+                            <img src="/api/placeholder/300/300" alt="Phù dâu 3" class="party-img">
+                            <h4>Phạm Thị Lan</h4>
+                            <p class="party-role">Phù dâu</p>
+                        </div>
+                        <div class="col-sm-6 party-card">
+                            <img src="/api/placeholder/300/300" alt="Phù dâu 4" class="party-img">
+                            <h4>Lê Thị Ngọc</h4>
+                            <p class="party-role">Phù dâu</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phù Rể -->
+                <div class="col-md-6 mb-4">
+                    <h3 class="text-center mb-4"><i class="fas fa-male me-2"></i>Phù Rể</h3>
+                    <div class="row">
+                        <div class="col
